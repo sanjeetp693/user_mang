@@ -1,0 +1,270 @@
+{
+	"swagger": "2.0",
+	"id": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+	"name": "User Management Task",
+	"version": "2.0.0",
+	"description": "",
+	"order": [
+		"b0287726-8186-ad0d-c88b-707449dc9bc5",
+		"6052f47c-1646-d393-df2e-d2ca48907a32",
+		"ce17eec7-41ab-f057-dd2c-c85f8d1e6f81",
+		"c0b7c24f-fef7-e041-50fd-f9f163da51a8",
+		"91b08b4d-a1ef-e7ac-3c6d-dacc67bff464",
+		"d0386d81-6325-5c5e-d292-d6e59b1a62e1"
+	],
+	"folders": [
+		{
+			"name": "Admin",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"order": [
+				"17fddf1b-60d1-d603-799f-856997c4b5ef",
+				"cb202fd1-4a3e-af03-2b3d-c6ffd950e0f3"
+			],
+			"owner": "14763831",
+			"folders_order": [],
+			"id": "9e8d670b-e9d0-2848-8b7c-8b9c6a3b2158"
+		}
+	],
+	"folders_order": [
+		"9e8d670b-e9d0-2848-8b7c-8b9c6a3b2158"
+	],
+	"timestamp": 0,
+	"owner": "14763831",
+	"public": false,
+	"requests": [
+		{
+			"id": "17fddf1b-60d1-d603-799f-856997c4b5ef",
+			"headers": "",
+			"headerData": [],
+			"url": "http://0.0.0.0:8071/api/v1/admin/getUserDetails",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068600265,
+			"name": "Get User Details",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": []
+		},
+		{
+			"id": "6052f47c-1646-d393-df2e-d2ca48907a32",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://0.0.0.0:8071/api/v1/user/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068565597,
+			"name": "Login",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": [],
+			"rawModeData": "{\n      \"email\" : \"sumancss12@gmail.com\",\n      \"password\" : \"123456789\"\n      \n}"
+		},
+		{
+			"id": "91b08b4d-a1ef-e7ac-3c6d-dacc67bff464",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkxNTYsImV4cCI6MTY2MjEzMTE1Nn0.rA8uBF7Ujvx03jrF464W7jWPDm2IujqDHVtyKuOi4Ts\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkxNTYsImV4cCI6MTY2MjEzMTE1Nn0.rA8uBF7Ujvx03jrF464W7jWPDm2IujqDHVtyKuOi4Ts",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://0.0.0.0:8071/api/v1/user/expression",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068585067,
+			"name": "expression",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": [],
+			"rawModeData": "{\n\t\"tittle\":\"test\",\n\t\"messages\":\"Welcome first Usergggggg\"\n}"
+		},
+		{
+			"id": "b0287726-8186-ad0d-c88b-707449dc9bc5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://0.0.0.0:8071/api/v1/user/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068509557,
+			"name": "Register",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": [],
+			"rawModeData": "{\n    \"firstName\" : \"Suman\",\n    \"lastName\" : \"CS\",\n    \"email\" : \"sumancss12@gmail.com\",\n    \"phone\" : \"8888887787\",\n    \"countryCode\" : \"+91\",\n    \"password\" : \"123456789\"\n}"
+		},
+		{
+			"id": "c0b7c24f-fef7-e041-50fd-f9f163da51a8",
+			"headers": "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkwNjYsImV4cCI6MTY2MjEzMTA2Nn0.zbJTCQiazBX9-9bVBrl-S94BWuJKObC16QWcwKOCAwA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkwNjYsImV4cCI6MTY2MjEzMTA2Nn0.zbJTCQiazBX9-9bVBrl-S94BWuJKObC16QWcwKOCAwA",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://0.0.0.0:8071/api/v1/user/changePassword",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068579304,
+			"name": "changePassword",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": [],
+			"rawModeData": "{\n\t\"oldPassword\":\"123456789\",\n\t\"newPassword\":\"123456\"\n}"
+		},
+		{
+			"id": "cb202fd1-4a3e-af03-2b3d-c6ffd950e0f3",
+			"headers": "",
+			"headerData": [],
+			"url": "http://0.0.0.0:8071/api/v1/admin/getUserExpressionById/62ea8e686acf8f7f97c5b710",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068616960,
+			"name": "Get User Expression By Id",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": []
+		},
+		{
+			"id": "ce17eec7-41ab-f057-dd2c-c85f8d1e6f81",
+			"headers": "Content-Type: application/json\nAuthorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkwNjYsImV4cCI6MTY2MjEzMTA2Nn0.zbJTCQiazBX9-9bVBrl-S94BWuJKObC16QWcwKOCAwA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkwNjYsImV4cCI6MTY2MjEzMTA2Nn0.zbJTCQiazBX9-9bVBrl-S94BWuJKObC16QWcwKOCAwA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8071/api/v1/user/editProfile",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1659539672460,
+			"name": "editProfile",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": [],
+			"rawModeData": "{\n    \"firstName\" : \"Sanjeet\",\n    \"lastName\" : \"CS\",\n    \"email\" : \"sumanso@gmail.com\",\n    \"phone\" : \"5555666256\",\n    \"countryCode\" : \"+91\"\n}"
+		},
+		{
+			"id": "d0386d81-6325-5c5e-d292-d6e59b1a62e1",
+			"headers": "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkxNTYsImV4cCI6MTY2MjEzMTE1Nn0.rA8uBF7Ujvx03jrF464W7jWPDm2IujqDHVtyKuOi4Ts\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmVhOGU2ODZhY2Y4ZjdmOTdjNWI3MTAiLCJpYXQiOjE2NTk1MzkxNTYsImV4cCI6MTY2MjEzMTE1Nn0.rA8uBF7Ujvx03jrF464W7jWPDm2IujqDHVtyKuOi4Ts",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://0.0.0.0:8071/api/v1/user/expression",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660068593696,
+			"name": "getExpression",
+			"description": "",
+			"collectionId": "9d58459e-9004-6d3a-f253-f1b10f10445b",
+			"responses": []
+		}
+	]
+}

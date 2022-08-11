@@ -1,0 +1,10 @@
+{
+   
+   
+    "mongo": {
+        
+        "url": "mongodb+srv://sanjeet10:ty7I1UGhWdiua4a1@cluster0.pvkvzbp.mongodb.net/?retryWrites=true&w=majority"
+    }
+    
+}
+
