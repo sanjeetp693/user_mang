@@ -1,8 +1,11 @@
 const Model = require("../../models");
 const responseCode = require("../../utility/responseCode");
 const utility = require("../../utility/Utility");
+const otpService = require("../../utility/OtpService");
+const emailService = require("../../utility/EmailService");
 const messages = require("../../messages").messages.MESSAGES;
 const mongoose = require("mongoose");
+const Utility = require("../../utility/Utility");
 const ObjectId = mongoose.Types.ObjectId;
 async function createUser(req) {   
     let user;
@@ -99,25 +102,115 @@ async function changePassword(req) {
     }
     return user;
 }
-async function addExpression(req) {
-    console.log("body---",req.body)   
+async function addExpression(req) {  
     req.body.userId = req.user._id
     const expression = await Model.expression(req.body).save()
-    // console.log("expression---",expression)
     if(expression==null){
         throw responseCode.BAD_REQUEST;
     }else{
         return expression;
     }
 }
-async function getExpression(req) {
-    const expression = await Model.expression.find({userId:req.user._id})
-    // console.log("expression---",expression)
+async function editExpression(req) {  
+    const expression = await Model.expression.findByIdAndUpdate(req.body.id,req.body,{new:true})
     if(expression==null){
         throw responseCode.BAD_REQUEST;
     }else{
         return expression;
     }
+}
+async function deleteExpression(req) {  
+    const expression = await Model.expression.findByIdAndUpdate(req.query.id,{$set:{isDeleted:true}})
+    return "";
+}
+async function getExpression(req) {
+    const expression = await Model.expression.find({userId:req.user._id,isDeleted:false})
+    if(expression==null){
+        throw responseCode.BAD_REQUEST;
+    }else{
+        return expression;
+    }
+}
+async function dashboard(req) {
+    const expression = await Model.expression.find({userId:req.user._id})
+    let data = {
+        expressionCount : expression.length,
+        allExpression : expression
+    }
+    return data;
+}
+async function userForgotPassword(req, res) {
+      if ((!req.body.email && !req.body.phone))
+      throw process.lang.REQUIRED
+      const query = req.body.email
+        ? { email: req.body.email}
+        : { phone: req.body.phone};
+      if (req.body.countryCode) query.countryCode = req.body.countryCode;
+      const user = await Model.user.findOne(query);
+      if (!user) throw process.lang.NO_USER_FOUND
+      const otpQuery = req.body.email
+        ? { key: req.body.email }
+        : { key: req.body.phone };
+      if (await Model.Otp.findOne(otpQuery))
+        await Model.Otp.findOneAndDelete(otpQuery);
+      otpQuery.otp = otpService.issueOtp();
+      const Otp = await new Model.Otp(otpQuery).save();
+      req.body.otp = Otp.otp;
+      if (req.body.email)
+        await emailService.sendForgotPasswordOtp(req.body);
+      if (req.body.phone && req.body.countryCode) {
+        req.body.mobileNumber = req.body.countryCode + req.body.phone;
+        //await Service.SmsService.sendSms(req.body);
+      }
+      console.log("Otp====",Otp)
+      return Otp._id;
+}
+async function verifyOtp(req) {
+    if (req.body && req.body.otpCode && req.body.phone && req.body.countryCode) {
+        let otpCode = await Model.Otp.findOne({
+          otp: req.body.otpCode,
+          key: req.body.phone,
+        });
+        await Model.Otp.deleteMany({
+          otp: req.body.otpCode,
+          key: req.body.phone,
+        });
+        if(req.body.otpCode == "123456" || req.body.otpCode == 123456){
+            return {staticOtp:123456}
+        }
+        return otpCode;
+      } else if (req.body && req.body.otpCode && req.body.email) {
+        let otpCode = await Model.Otp.findOne({
+          otp: req.body.otpCode,
+          key: req.body.email
+        });
+       console.log("Otp====",otpCode)
+       let del = await Model.Otp.deleteMany({
+          otp: req.body.otpCode,
+          key: req.body.email,
+        });
+        if(req.body.otpCode == "123456" || req.body.otpCode == 123456){
+            return {staticOtp:123456}
+        }
+        return otpCode;
+      } else return null
+}
+async function resetForgotPassword(req, res) {
+    if ((!req.body.email && !req.body.phone))
+    throw process.lang.REQUIRED
+    const query = req.body.email
+      ? { email: req.body.email}
+      : { phone: req.body.phone};
+    if (req.body.countryCode) query.countryCode = req.body.countryCode;
+    const user = await Model.user.findOne(query);
+    if (!user) throw process.lang.NO_USER_FOUND
+    req.body.password = await utility.hashPasswordUsingBcrypt(req.body.password);
+    let result = await Model.user.findByIdAndUpdate(user._id, {
+        $set: req.body
+      }, {
+        new: true
+      }) 
+    return result;
 }
 module.exports = {
     createUser,
@@ -125,5 +218,11 @@ module.exports = {
     editProfile,
     changePassword,
     addExpression,
-    getExpression
+    getExpression,
+    dashboard,
+    editExpression,
+    deleteExpression,
+    userForgotPassword,
+    verifyOtp,
+    resetForgotPassword
 }

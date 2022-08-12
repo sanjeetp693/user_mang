@@ -26,7 +26,7 @@ function sendSuccessResponse(req, res, data, httpCode = responseCode.OK, message
     res.status(httpCode).set(headers).send(responseData);
 }
 
-function sendFailResponse(req, res, httpCode = responseCode.BAD_REQUEST, message, data) {
+function sendFailResponse(req, res, data, httpCode = responseCode.BAD_REQUEST, message) {
     if (!data && message) {
         data = {
             statusCode : httpCode,

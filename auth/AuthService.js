@@ -23,6 +23,7 @@ module.exports.userAuth = (...args) => async (req, res, next) => {
     }
     token = token[0];
     const decodeData = await Utility.jwtVerify(token);
+    console.log("decodeData-----",decodeData)
     let doc = null;
     let role = "";
     let qry = {
@@ -38,7 +39,6 @@ module.exports.userAuth = (...args) => async (req, res, next) => {
     if (roles.includes("admin")) {
       role = "admin";
       doc = await Model.admin.findOne({
-        appId: req.headers.appid,
         _id : mongoose.Types.ObjectId(decodeData._id)
       });
     };
@@ -53,6 +53,7 @@ module.exports.userAuth = (...args) => async (req, res, next) => {
     if (role) req[role] = doc.toJSON();
     next();
   } catch (error) {
+    console.log("error--",error)
     const message = String(error.name).toLowerCase() === "error" ? error.message : "UNAUTHORIZED_ACCESS";
     return res.status(401).send({
       data: {},

@@ -11,20 +11,18 @@ const validateSchema = async (inputs, schema) => {
 const validateSignUp = async (req, property = "body") => {
     let schema = {};
     schema = joi.object().keys({
-        firstName: joi.string().required(),
-        lastName: joi.string().required(),
+        name: joi.string().required(),
         email: joi.string().required(),
-        phone: joi.string().required(),
-        countryCode: joi.string().required(),
         password: joi.string().required(),
         profilePic: joi.string().optional()
     });
 
     return await validateSchema(req[property], schema);
 };
-const editProfile = async (req, property = "body") => {
+const editUserDetails = async (req, property = "body") => {
     let schema = {};
     schema = joi.object().keys({
+        userId:joi.string().optional(),
         firstName: joi.string().optional(),
         lastName: joi.string().optional(),
         email: joi.string().optional(),
@@ -35,12 +33,10 @@ const editProfile = async (req, property = "body") => {
 
     return await validateSchema(req[property], schema);
 };
-const validateLogIn = async (req, property = 'body') => {
+const login = async (req, property = 'body') => {
     let schema = {}
     schema = joi.object().keys({
-        countryCode: joi.string().optional(),
         email: joi.string().optional(),
-        phone: joi.string().regex(/^[0-9]+$/).min(5).optional(),
         password: joi.string().required(),
 
     });
@@ -64,16 +60,6 @@ const addExpression = async (req, property = 'body') => {
     });
     return await validateSchema(req[property], schema);
 };
-const userForgotPassword = async (req, property = 'body') => {
-    let schema = {}
-    schema = joi.object().keys({
-        email:joi.string().optional(),
-        phone: joi.string().optional(),
-        countryCode:joi.string().optional()
-
-    });
-    return await validateSchema(req[property], schema);
-};
 const editExpression = async (req, property = 'body') => {
     let schema = {}
     schema = joi.object().keys({
@@ -84,37 +70,12 @@ const editExpression = async (req, property = 'body') => {
     });
     return await validateSchema(req[property], schema);
 };
-const verifyOtp = async (req, property = 'body') => {
-    let schema = {}
-    schema = joi.object().keys({
-        otpCode:joi.string().required(),
-        phone:joi.string().optional(),
-        countryCode: joi.string().optional(),
-        email:joi.string().optional()
-
-    });
-    return await validateSchema(req[property], schema);
-};
-const resetForgotPassword = async (req, property = 'body') => {
-    let schema = {}
-    schema = joi.object().keys({
-        password:joi.string().required(),
-        phone:joi.string().optional(),
-        countryCode: joi.string().optional(),
-        email:joi.string().optional()
-
-    });
-    return await validateSchema(req[property], schema);
-};
 module.exports = {
     validateSignUp,
-    validateLogIn,
-    editProfile,
+    login,
     changePassword,
     addExpression,
     editExpression,
-    userForgotPassword,
-    verifyOtp,
-    resetForgotPassword
+    editUserDetails
 };
 

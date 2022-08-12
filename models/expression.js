@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const ExpressionModel = new Schema({
     tittle: { type: String, default: ""},
     messages: { type: String, default: ""},

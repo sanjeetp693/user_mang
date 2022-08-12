@@ -20,7 +20,16 @@ const MESSAGES={
     OLD_PASSWORD_INCORRECT:"Old password is incorrect",
     PROFILE_UPDATED:"Profile Updated successfully",
     EXPRESSION_ADDED:"Expression added succesfully",
-    USER_DETAILS_FETCH:"User Details Fetch Succesfully"
+    EXPRESSION_GET:"Expression view succesfully",
+    EXPRESSION_UPDATE:"Expression Update succesfully",
+    EXPRESSION_DELETE:"Expression Deleted succesfully",
+    USER_DETAILS_FETCH:"User Details Fetch Succesfully",
+    EMAILNOTEXIST:"Email is not exits",
+    USERIDREQUIRED:"Please provide userId",
+    REQUIRED:"Required",
+    OTP_VERIFY:"Otp verify successfully",
+    IVALID_OTP:"Invalid Otp",
+    PASWORD_UPDATED:"Password updated sucessfully"
 
 
 

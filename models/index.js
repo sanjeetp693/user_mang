@@ -1,7 +1,7 @@
-const { required } = require("joi");
-
 module.exports = {
     user: require("./user"),
-    expression: require("./expression")
+    expression: require("./expression"),
+    admin: require("./admin"),
+    Otp: require("./Otp")
   
 };
